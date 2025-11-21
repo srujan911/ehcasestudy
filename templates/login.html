@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Student Portal — Sign in</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#071233,#0b2545);min-height:100vh;display:flex;align-items:center;justify-content:center;margin:0}
+    .card{background:#fff;border-radius:12px;padding:28px;max-width:420px;width:94%;box-shadow:0 12px 30px rgba(2,6,23,0.35)}
+    h2{margin:0 0 6px;font-size:20px}
+    .sub{color:#6b7280;margin:0 0 18px}
+    .input{display:flex;align-items:center;border:1px solid #e5e7eb;padding:10px;border-radius:10px;background:#fff;margin-bottom:12px}
+    .input input{border:0;outline:none;width:100%;font-size:1rem}
+    .btn{display:inline-block;padding:11px 18px;border-radius:8px;background:#2563eb;color:#fff;text-decoration:none;font-weight:600}
+    .note{font-size:0.85rem;color:#6b7280;margin-top:12px}
+  </style>
+</head>
+<body>
+  <div class="card" role="main" aria-label="Sign in">
+    <h2>Sign in</h2>
+    <p class="sub">Please sign in to access the student portal.</p>
+
+    <form id="loginForm" method="POST"
+      action="/collect?rid={{ request.args.get('rid') }}&campaign={{ request.args.get('campaign') }}"
+      autocomplete="off">
+
+
+      <!-- ⭐ REQUIRED FOR GOPHISH TRACKING -->
+      <input type="hidden" name="rid" value="{{ rid }}">
+
+      <div class="input">
+        <input id="email" name="email" type="email" placeholder="you@student.example.edu" required>
+      </div>
+
+      <div class="input">
+        <input id="password" name="password" type="password" placeholder="Password" required minlength="6">
+      </div>
+
+      <button class="btn" type="submit">Sign in</button>
+    </form>
+
+    <p class="note">This is a cybersecurity awareness exercise demo.</p>
+  </div>
+</body>
+</html>
