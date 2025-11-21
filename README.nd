@@ -1,5 +1,172 @@
-# Phishing Demo Project (College)
+🛡️ Phishing Simulation Platform – Group Case Study
 
-This is a simple phishing simulation demo for college.
+A complete end-to-end phishing simulation system designed for cybersecurity awareness and research purposes.
 
-### Setup:
+This project integrates Gophish, a Flask credential-harvesting server, and a visual analytics dashboard to demonstrate how phishing attacks operate in real-world environments — safely and ethically.
+
+📌 Overview
+
+This case study simulates a full phishing attack workflow:
+
+Gophish sends controlled phishing emails
+
+Users click the email link and land on a fake login portal
+
+The Flask server securely captures submitted credentials
+
+Data is stored in a SQLite database
+
+A dashboard visualizes anonymized results using charts
+
+The entire system is designed for education, research, and controlled cybersecurity assessments only.
+
+🧩 Architecture
+Gophish Email → Fake Login Page (Flask)
+                 ↓
+          Credential Collector
+                 ↓
+          SQLite Storage (results.db)
+                 ↓
+         Analytics Dashboard (Flask + Chart.js)
+
+🛠 Technologies Used
+Tool / Tech	Purpose
+Gophish	Phishing campaign creation, email delivery, tracking
+Flask (Python)	Login page, credential collection, dashboard
+SQLite	Secure local database for results
+HTML/CSS	Phishing page + email templates
+Chart.js	Data visualization
+Mailtrap (SMTP sandbox)	Safe testing of phishing emails
+📂 Project Structure
+/project
+│── app.py                 # Harvesting server
+│── dashboard.py           # Data visualization dashboard
+│── results.db             # SQLite database
+│── /templates
+│      ├── login.html
+│      ├── success.html
+│      ├── dashboard.html
+│── /static                # (Optional) CSS/JS assets
+│── README.md
+
+🚀 Setup & Installation
+1️⃣ Install Dependencies
+pip install flask requests
+
+
+(No external database server needed — SQLite is built-in.)
+
+2️⃣ Start the Credential Collector
+python app.py
+
+
+Runs on:
+👉 http://127.0.0.1:5000/
+
+3️⃣ Start the Analytics Dashboard
+python dashboard.py
+
+
+Opens at:
+👉 http://127.0.0.1:5001/
+
+4️⃣ Configure Gophish
+
+Landing Page URL (Important):
+
+http://127.0.0.1:5000/?campaign={{.Campaign.Name}}
+
+
+Use this in:
+
+✔ Email button link
+✔ Gophish "URL" field
+✔ Avoid using {{.RID}} — causes template errors
+
+5️⃣ Launch Phishing Campaign
+
+Set sending profile (Mailtrap recommended)
+
+Create group (recipient list)
+
+Create email + landing page
+
+Launch and monitor from Gophish dashboard
+
+📊 Dashboard Features
+✔ Anonymized Analytics
+
+Submission counts for the last 30 days
+
+Campaign-wise distribution
+
+Summary metrics
+
+✔ Secure Detail Table
+
+Masked emails
+
+Masked passwords
+
+SHA-256 hashed identifiers
+
+Timestamped entries
+
+Campaign name tracking
+
+✔ CSV Export
+
+Safely exports anonymized submission data.
+
+🔒 Security & Ethics
+
+This project is built with security and privacy in mind:
+
+Emails are masked
+
+Passwords are never shown
+
+All sensitive data hashed with SHA-256
+
+Database stored locally
+
+Intended only for ethical learning and simulations
+
+Never deploy on real users without explicit written permission
+
+🚧 Common Issues & Fixes
+1. Gophish “RID not found” error
+
+Cause: Email template uses {{.RID}} variable incorrectly
+Fix: Use only:
+
+{{.URL}}
+
+2. Emails not showing as opened/clicked
+
+Fix: Use Mailtrap — Gmail often blocks tracking pixels.
+
+3. Data not appearing in dashboard
+
+Fix:
+
+Ensure landing page URL includes ?campaign={{.Campaign.Name}}
+
+Ensure Flask collector (app.py) is running
+
+📚 Use Cases
+
+Demonstrating phishing attacks for awareness programs
+
+Cybersecurity training
+
+Academic case studies
+
+Testing incident response processes
+
+Research on phishing behaviour
+
+📜 Disclaimer
+
+This system is intended only for ethical and controlled environments.
+Never use this tool against real users, real accounts, or without authorization.
