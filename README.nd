@@ -1,7 +1,7 @@
-🛡️ Phishing Simulation Platform – Case Study
+🛡️ Phishing Simulation Platform
 
-A complete end-to-end phishing simulation system designed for cybersecurity awareness, research, and controlled training.
-This project integrates Gophish, a Flask credential collector, SQLite storage, and a visual analytics dashboard, simulating how phishing attacks operate in real-world environments — ethically and safely.
+A complete end-to-end phishing simulation system built for cybersecurity awareness, academic research, and controlled training environments.
+This project integrates Gophish, a Flask credential-harvesting server, SQLite local storage, and a visual analytics dashboard to demonstrate how phishing attacks work in real-world scenarios — safely and ethically.
 
 📌 Features
 
@@ -9,8 +9,35 @@ This project integrates Gophish, a Flask credential collector, SQLite storage, a
 
 🖥️ Realistic fake login page created with Flask
 
-🔐 Secure credential harvesting with masking & hashing
+🔐 Secure credential harvesting with masking + SHA-256 hashing
 
-🗄️ Local SQLite storage for results
+🗄️ Local SQLite database for storing results
 
-📊 Analytics dashboard (Flask + Chart.js)
+📊 Visual analytics dashboard (Flask + Chart.js)
+
+🧪 Mailtrap SMTP integration for safe testing
+
+⚡ Lightweight, fast, and fully local
+
+🧩 Architecture Overview
+Gophish Email → Fake Login Page (Flask)
+                 ↓
+          Credential Collector
+                 ↓
+          SQLite Storage (results.db)
+                 ↓
+     Analytics Dashboard (Flask + Chart.js)
+
+🛠 Technologies Used
+
+Gophish – phishing campaign automation
+
+Flask (Python) – landing page + backend
+
+SQLite – secure local DB
+
+HTML/CSS – phishing page templates
+
+Chart.js – interactive visual charts
+
+Mailtrap – safe SMTP testing
