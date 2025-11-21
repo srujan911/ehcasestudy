@@ -1,43 +1,78 @@
-🛡️ Phishing Simulation Platform
 
-A complete end-to-end phishing simulation system built for cybersecurity awareness, academic research, and controlled training environments.
-This project integrates Gophish, a Flask credential-harvesting server, SQLite local storage, and a visual analytics dashboard to demonstrate how phishing attacks work in real-world scenarios — safely and ethically.
 
-📌 Features
+---
 
-✉️ Automated phishing email campaigns using Gophish
+# 🌟 **Sentiment Analysis Using NLP**
 
-🖥️ Realistic fake login page created with Flask
+A simple and powerful web-based sentiment analysis application built using **Python, Flask, and Transformer-based NLP models**.
+The system analyzes user-entered text and classifies it into **Positive**, **Negative**, or **Neutral** sentiments with confidence scores.
+This project is developed as part of the **Natural Language Processing (NLP) Mini Project**.
 
-🔐 Secure credential harvesting with masking + SHA-256 hashing
+---
 
-🗄️ Local SQLite database for storing results
+# 📌 **Features**
 
-📊 Visual analytics dashboard (Flask + Chart.js)
+* 🔍 Real-time sentiment prediction
+* 🤖 Powered by Transformer-based NLP (Twitter RoBERTa Model)
+* 🌐 Clean and responsive Flask web interface
+* ⚡ Fast, optimized, and lightweight
+* 🎯 Easy to deploy, customize, and extend
 
-🧪 Mailtrap SMTP integration for safe testing
+---
 
-⚡ Lightweight, fast, and fully local
+# 🛠️ **Technologies Used**
 
-🧩 Architecture Overview
-Gophish Email → Fake Login Page (Flask)
-                 ↓
-          Credential Collector
-                 ↓
-          SQLite Storage (results.db)
-                 ↓
-     Analytics Dashboard (Flask + Chart.js)
+* **Python**
+* **Flask**
+* **HuggingFace Transformers**
+* **HTML, CSS, Bootstrap**
+* **JavaScript (Fetch API)**
 
-🛠 Technologies Used
+---
 
-Gophish – phishing campaign automation
+# 📁 **Project Structure**
 
-Flask (Python) – landing page + backend
+```
+Sentiment-Analysis-NLP/
+│── app.py
+│── templates/
+│     └── index.html
+│── static/
+│── README.md
+```
 
-SQLite – secure local DB
+---
 
-HTML/CSS – phishing page templates
+# 📤 **Input**
 
-Chart.js – interactive visual charts
+Users enter any custom text in the web interface for analysis.
 
-Mailtrap – safe SMTP testing
+---
+
+# 📥 **Output**
+
+The system returns:
+
+* **Sentiment Label** (Positive / Neutral / Negative)
+* **Confidence Score**
+
+---
+
+# 📌 **Use Cases**
+
+* Social media opinion analysis
+* Customer feedback monitoring
+* Review classification
+* Emotion-aware intelligent applications
+
+---
+
+# 📜 **License**
+
+This project is developed as part of the **NLP Mini Project**.
+Feel free to modify, improve, or integrate it into your own applications.
+
+---
+
+
+
