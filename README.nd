@@ -1,52 +1,54 @@
 🛡️ Phishing Simulation Platform – Group Case Study
 
-A complete end-to-end phishing simulation system designed for cybersecurity awareness and research purposes.
+A complete end-to-end phishing simulation system designed for cybersecurity awareness, academic research, and controlled training environments.
 
-This project integrates Gophish, a Flask credential-harvesting server, and a visual analytics dashboard to demonstrate how phishing attacks operate in real-world environments — safely and ethically.
+This project integrates Gophish, a Flask credential-harvesting server, and an analytics dashboard to demonstrate how phishing attacks operate in real-world scenarios — safely and ethically.
 
 📌 Overview
 
-This case study simulates a full phishing attack workflow:
+This case study simulates the full lifecycle of a phishing attack:
 
 Gophish sends controlled phishing emails
 
-Users click the email link and land on a fake login portal
+User clicks the email and lands on a fake login page
 
-The Flask server securely captures submitted credentials
+Flask server captures the submitted credentials
 
 Data is stored in a SQLite database
 
-A dashboard visualizes anonymized results using charts
+Dashboard visualizes anonymized results using Chart.js
 
-The entire system is designed for education, research, and controlled cybersecurity assessments only.
+✔ Built for education and training only
+✔ No real credentials used
+✔ Fully local and secure environment
 
 🧩 Architecture
 Gophish Email → Fake Login Page (Flask)
                  ↓
           Credential Collector
                  ↓
-          SQLite Storage (results.db)
+         SQLite Database (results.db)
                  ↓
-         Analytics Dashboard (Flask + Chart.js)
+     Analytics Dashboard (Flask + Chart.js)
 
 🛠 Technologies Used
-Tool / Tech	Purpose
+Tool / Technology	Purpose
 Gophish	Phishing campaign creation, email delivery, tracking
-Flask (Python)	Login page, credential collection, dashboard
-SQLite	Secure local database for results
-HTML/CSS	Phishing page + email templates
+Flask (Python)	Fake login page, credential collection, analytics dashboard
+SQLite	Secure local database for captured results
+HTML / CSS	Web templates and phishing pages
 Chart.js	Data visualization
-Mailtrap (SMTP sandbox)	Safe testing of phishing emails
+Mailtrap SMTP	Safe sandbox for sending phishing emails
 📂 Project Structure
-/project
-│── app.py                 # Harvesting server
-│── dashboard.py           # Data visualization dashboard
+project/
+│── app.py                 # Credential-harvesting server
+│── dashboard.py           # Analytics dashboard
 │── results.db             # SQLite database
 │── /templates
 │      ├── login.html
 │      ├── success.html
 │      ├── dashboard.html
-│── /static                # (Optional) CSS/JS assets
+│── /static                # Optional JS/CSS
 │── README.md
 
 🚀 Setup & Installation
@@ -54,51 +56,46 @@ Mailtrap (SMTP sandbox)	Safe testing of phishing emails
 pip install flask requests
 
 
-(No external database server needed — SQLite is built-in.)
+(No external DB required — SQLite is built-in)
 
-2️⃣ Start the Credential Collector
+2️⃣ Start Credential Collector
 python app.py
 
 
-Runs on:
-👉 http://127.0.0.1:5000/
+Runs at: http://127.0.0.1:5000/
 
-3️⃣ Start the Analytics Dashboard
+3️⃣ Start Analytics Dashboard
 python dashboard.py
 
 
-Opens at:
-👉 http://127.0.0.1:5001/
+Opens at: http://127.0.0.1:5001/
 
 4️⃣ Configure Gophish
 
-Landing Page URL (Important):
+Use this landing page URL:
 
 http://127.0.0.1:5000/?campaign={{.Campaign.Name}}
 
 
-Use this in:
-
+Use it in:
 ✔ Email button link
-✔ Gophish "URL" field
-✔ Avoid using {{.RID}} — causes template errors
+✔ Gophish “URL” field
 
-5️⃣ Launch Phishing Campaign
+Do NOT use {{.RID}} — it causes errors.
 
-Set sending profile (Mailtrap recommended)
+5️⃣ Launch the Phishing Campaign
 
-Create group (recipient list)
-
-Create email + landing page
-
-Launch and monitor from Gophish dashboard
+✔ Set Mailtrap as SMTP
+✔ Create recipients group
+✔ Create email + landing page
+✔ Launch & track from Gophish dashboard
 
 📊 Dashboard Features
 ✔ Anonymized Analytics
 
-Submission counts for the last 30 days
+Daily submission counts
 
-Campaign-wise distribution
+Campaign-based stats
 
 Summary metrics
 
@@ -110,63 +107,70 @@ Masked passwords
 
 SHA-256 hashed identifiers
 
-Timestamped entries
+Timestamped records
 
 Campaign name tracking
 
 ✔ CSV Export
 
-Safely exports anonymized submission data.
+Exports anonymized data only — safe for research or presentations.
 
 🔒 Security & Ethics
 
-This project is built with security and privacy in mind:
+This system is built with privacy and safety first:
 
-Emails are masked
+No real credentials stored
 
-Passwords are never shown
+Passwords always masked
 
-All sensitive data hashed with SHA-256
+Emails automatically obfuscated
 
-Database stored locally
+Hashing via SHA-256
 
-Intended only for ethical learning and simulations
+Local database only
 
-Never deploy on real users without explicit written permission
+Intended only for ethical training and simulations
+
+Never use without explicit written authorization.
 
 🚧 Common Issues & Fixes
-1. Gophish “RID not found” error
+1. Gophish “RID not found”
 
-Cause: Email template uses {{.RID}} variable incorrectly
-Fix: Use only:
+❌ Caused by incorrect use of {{.RID}}
+✔ Fix: Only use {{.URL}} in email template
 
-{{.URL}}
+2. Email open/click not detected
 
-2. Emails not showing as opened/clicked
+✔ Use Mailtrap, as Gmail blocks tracking pixels
 
-Fix: Use Mailtrap — Gmail often blocks tracking pixels.
+3. Data not visible in dashboard
 
-3. Data not appearing in dashboard
+Ensure URL contains:
+?campaign={{.Campaign.Name}}
 
-Fix:
+Ensure app.py is running
 
-Ensure landing page URL includes ?campaign={{.Campaign.Name}}
-
-Ensure Flask collector (app.py) is running
+Ensure correct POST route in login page
 
 📚 Use Cases
 
-Demonstrating phishing attacks for awareness programs
+Cybersecurity awareness training
 
-Cybersecurity training
+Organizational phishing simulations
 
-Academic case studies
+Academic research case studies
 
-Testing incident response processes
+Demonstrating social engineering workflows
 
-Research on phishing behaviour
+Testing incident response procedures
 
 📜 Disclaimer
 
-This system is intended only for ethical and controlled environments.
-Never use this tool against real users, real accounts, or without authorization.
+This system is intended ONLY for:
+
+✔ Ethical learning
+✔ Internal training
+✔ Controlled research
+✔ Demonstration purposes
+
+Unauthorized use on real individuals or real systems is strictly prohibited.
